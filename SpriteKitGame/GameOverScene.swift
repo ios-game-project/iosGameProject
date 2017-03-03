@@ -111,13 +111,17 @@ class GameOverScene: SKScene {
             
         }else{
             testLabel.text = "launched before"
-            
             //retrieve existed array and display
             let defaults = UserDefaults.standard
             var scoreArray = defaults.array(forKey: "SavedIntArray")  as? [Int] ?? [Int]()
 
+            
+      
+            
+            
+            
             //sort array with new score
-            if(newGrade>scoreArray[4]){
+            if(newGrade>scoreArray[3]){
                 for i in (0..<5){
                     if(newGrade>scoreArray[i] && newGrade != scoreArray[0] && newGrade != scoreArray[1] && newGrade != scoreArray[2] && newGrade != scoreArray[3] && newGrade != scoreArray[4]){
                         //array[i] = newValue!
