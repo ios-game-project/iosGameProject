@@ -15,6 +15,7 @@ struct PhysicsCategory {
     static let Projectile: UInt32 = 0b10      // 2
 }
 
+
 func + (left: CGPoint, right: CGPoint) -> CGPoint {
     return CGPoint(x: left.x + right.x, y: left.y + right.y)
 }
