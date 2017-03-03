@@ -201,7 +201,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func projectileDidCollideWithMonster(projectile: SKSpriteNode, monster: SKSpriteNode) {
-        print("Hit")
+        //print("Hit")
         
         //add explosion effect and sound
         let explosion = SKEmitterNode(fileNamed: "Explosion")!
@@ -238,8 +238,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // 2
         if ((firstBody.categoryBitMask & PhysicsCategory.Monster != 0) &&
             (secondBody.categoryBitMask & PhysicsCategory.Projectile != 0)) {
-            if let monster = firstBody.node as? SKSpriteNode, let
+            if var monster = firstBody.node as? SKSpriteNode, let
                 projectile = secondBody.node as? SKSpriteNode {
+                
+                moster =
+                
                 projectileDidCollideWithMonster(projectile: projectile, monster: monster)
             }
         }
