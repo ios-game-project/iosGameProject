@@ -14,6 +14,8 @@
 		1389266D1E49550700ACE1AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1389266B1E49550700ACE1AA /* Main.storyboard */; };
 		1389266F1E49550700ACE1AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1389266E1E49550700ACE1AA /* Assets.xcassets */; };
 		138926721E49550700ACE1AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 138926701E49550700ACE1AA /* LaunchScreen.storyboard */; };
+		20CD68231E693B9500BA305F /* ExplosionSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CD68221E693B9500BA305F /* ExplosionSound.mp3 */; };
+		20CD68251E6943E900BA305F /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20CD68241E6943E900BA305F /* Explosion.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		1389266E1E49550700ACE1AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		138926711E49550700ACE1AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		138926731E49550700ACE1AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20CD68221E693B9500BA305F /* ExplosionSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ExplosionSound.mp3; sourceTree = "<group>"; };
+		20CD68241E6943E900BA305F /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 		138926601E49550700ACE1AA /* SpriteKitGame */ = {
 			isa = PBXGroup;
 			children = (
+				20CD681F1E693B5700BA305F /* Asset */,
 				138926611E49550700ACE1AA /* AppDelegate.swift */,
 				138926671E49550700ACE1AA /* GameScene.swift */,
 				138926691E49550700ACE1AA /* GameViewController.swift */,
@@ -68,6 +73,15 @@
 				131320F91E4C33F80001D8E6 /* GameOverScene.swift */,
 			);
 			path = SpriteKitGame;
+			sourceTree = "<group>";
+		};
+		20CD681F1E693B5700BA305F /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				20CD68241E6943E900BA305F /* Explosion.sks */,
+				20CD68221E693B9500BA305F /* ExplosionSound.mp3 */,
+			);
+			name = Asset;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,7 +116,7 @@
 				TargetAttributes = {
 					1389265D1E49550700ACE1AA = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = V4LK5H86A7;
+						DevelopmentTeam = 64XW382CCW;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -130,7 +144,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20CD68231E693B9500BA305F /* ExplosionSound.mp3 in Resources */,
 				1389266D1E49550700ACE1AA /* Main.storyboard in Resources */,
+				20CD68251E6943E900BA305F /* Explosion.sks in Resources */,
 				1389266F1E49550700ACE1AA /* Assets.xcassets in Resources */,
 				138926721E49550700ACE1AA /* LaunchScreen.storyboard in Resources */,
 			);
@@ -269,14 +285,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V4LK5H86A7;
+				DEVELOPMENT_TEAM = 64XW382CCW;
 				INFOPLIST_FILE = SpriteKitGame/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = bcit.SpriteKitGame;
+				PRODUCT_BUNDLE_IDENTIFIER = bcit.SpriteKitGameGroup17;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -284,14 +300,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V4LK5H86A7;
+				DEVELOPMENT_TEAM = 64XW382CCW;
 				INFOPLIST_FILE = SpriteKitGame/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = bcit.SpriteKitGame;
+				PRODUCT_BUNDLE_IDENTIFIER = bcit.SpriteKitGameGroup17;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
