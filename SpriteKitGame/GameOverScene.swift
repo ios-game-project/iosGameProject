@@ -75,7 +75,7 @@ class GameOverScene: SKScene {
         addChild(testLabel)
 
         
-        if(UserDefaults.standard.bool(forKey: "HasLaunchedOnce")){
+        if(!UserDefaults.standard.bool(forKey: "HasLaunchedOnce")){
             testLabel.text = "first launch"
             
             UserDefaults.standard.set(true, forKey: "HasLaunchedOnce")
@@ -111,6 +111,7 @@ class GameOverScene: SKScene {
             
         }else{
             testLabel.text = "launched before"
+
             //retrieve existed array and display
             let defaults = UserDefaults.standard
             var scoreArray = defaults.array(forKey: "SavedIntArray")  as? [Int] ?? [Int]()

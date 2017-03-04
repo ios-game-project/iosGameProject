@@ -62,9 +62,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var fallFrequency = 1.5
     let player = SKSpriteNode(imageNamed: "player")
     
+    var lastPoint = CGPoint.zero
+    var swiped = false
+    
+    var red:CGFloat = 1.0
+    var green:CGFloat = 0.0
+    var blue:CGFloat = 0.0
+    
+    var tool:UIImageView!
+    var isDrawing = true
+    
+    //get screen size here
+    let screenWidth  = UIScreen.main.bounds.width
+    let screenHeight = UIScreen.main.bounds.height
+    var imageView:UIImageView!
+    //imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+    
+    var monsterArray = ["vline" : [SKSpriteNode](),"hline" : [SKSpriteNode]()]
+
+    
     override func didMove(to view: SKView) {
         // 2
         backgroundColor = SKColor.black
+        
+        //create a UIImageView
+        imageView = UIImageView(frame:CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth))
+        self.view?.addSubview(imageView)
+        
+        
+        tool = UIImageView()
+        tool.frame = CGRect(x: (self.view?.bounds.size.width)!, y: (self.view?.bounds.size.height)!, width: 38, height: 38)
+        
+        self.view?.addSubview(tool)
+        
         // 3
         player.position = CGPoint(x: size.width * 0.5, y: size.height * 0.1)
         // 4
@@ -116,7 +146,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let monster2 = SKSpriteNode(imageNamed: "monster2")
         
         let monster_array = [monster,monster2]
-        
+        var monsterKey : String!
         
         // Determine where to spawn the monster along the X axis
         let  actualX = random(min: monster.size.width/2, max: size.width - monster.size.width/2)
@@ -125,6 +155,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // and along a random position along the Y axis as calculated above
         //let temp = monster_array.count - 1
         let index = arc4random_uniform(UInt32(monster_array.count))
+        
+        if index == 0 {
+            monsterKey = "vline"
+        } else {
+            monsterKey = "hline"
+        }
+        
         let actual_monster = monster_array[Int(index)]
         
         actual_monster.physicsBody = SKPhysicsBody(rectangleOf: monster.size) // 1
@@ -154,9 +191,54 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        swiped = false
+        
+        if let touch = touches.first {
+            lastPoint = touch.location(in: self.view)
+        }
+    }
+    
+    func drawLines(fromPoint:CGPoint,toPoint:CGPoint) {
+        UIGraphicsBeginImageContext((self.view?.frame.size)!)
+        imageView.image?.draw(in: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
+        context?.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
+        tool.center = toPoint
+        
+        context?.setBlendMode(CGBlendMode.normal)
+        context?.setLineCap(CGLineCap.round)
+        context?.setLineWidth(5)
+        context?.setStrokeColor(UIColor(red: red, green: green, blue: blue, alpha: 1.0).cgColor)
+        
+        context?.strokePath()
+        
+        imageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        swiped = true
+        
+        if let touch = touches.first {
+            let currentPoint = touch.location(in: self.view)
+            drawLines(fromPoint: lastPoint, toPoint: currentPoint)
+            
+            lastPoint = currentPoint
+        }
+    }
+    
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if !swiped {
+            drawLines(fromPoint: lastPoint, toPoint: lastPoint)
+        }
+        self.imageView.image = nil
+        /*
         
         // 1 - Choose one of the touches to work with
         guard let touch = touches.first else {
@@ -196,9 +278,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         projectile.physicsBody?.categoryBitMask = PhysicsCategory.Projectile
         projectile.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
         projectile.physicsBody?.collisionBitMask = PhysicsCategory.None
-        projectile.physicsBody?.usesPreciseCollisionDetection = true
+        projectile.physicsBody?.usesPreciseCollisionDetection = true*/
         
     }
+    
+    
+    
+    
     
     func projectileDidCollideWithMonster(projectile: SKSpriteNode, monster: SKSpriteNode) {
         //print("Hit")
