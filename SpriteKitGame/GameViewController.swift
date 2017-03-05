@@ -12,14 +12,14 @@ import SpriteKit
 class GameViewController: UIViewController {
     
     var recognizer: GestureRecognizer!
-    
+    var scene: GameScene!
     // draws the user input
     //@IBOutlet weak var circlerDrawer: CircleDrawView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back")!)
-        let scene = GameScene(size: view.bounds.size)
+        scene = GameScene(size: view.bounds.size)
         //let skView = view as! SKView
         
         if let skView = self.view as! SKView? {
@@ -40,6 +40,7 @@ class GameViewController: UIViewController {
         //scene.scaleMode = .resizeFill
         //skView.presentScene(scene)
         //circleRecognizer = CircleGestureRecognizer(target: self, action: "circled:")
+        
         recognizer = GestureRecognizer(target: self, action: #selector(GameViewController.circled))
         view.addGestureRecognizer(recognizer)
         
@@ -51,7 +52,7 @@ class GameViewController: UIViewController {
     
     func circled(c: GestureRecognizer){
         if c.state == .began {
-            print("began")
+            //print("began")
             //circlerDrawer.clear()
         }
         if c.state == .changed {
@@ -62,8 +63,9 @@ class GameViewController: UIViewController {
         }
         if c.state == .ended {
             //print("circle")
-            GameScene().projectileDidCollideWithMonster(projectile: projectile, monster: monster)
             print("vertical line")
+            
+            scene.projectileDidCollideWithMonster(name: "vline")
         }
         /*
          if c.state == .ended || c.state == .failed || c.state == .cancelled {

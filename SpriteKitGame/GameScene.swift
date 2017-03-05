@@ -8,6 +8,8 @@
 
 import SpriteKit
 
+
+
 struct PhysicsCategory {
     static let None      : UInt32 = 0
     static let All       : UInt32 = UInt32.max
@@ -169,7 +171,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         actual_monster.physicsBody?.categoryBitMask = PhysicsCategory.Monster // 3
         actual_monster.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile // 4
         actual_monster.physicsBody?.collisionBitMask = PhysicsCategory.None // 5
-        
+        actual_monster.name = monsterKey
         actual_monster.position = CGPoint(x: actualX, y: size.height + actual_monster.size.height/2)
         
         // Add the monster to the scene
@@ -187,17 +189,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let gameOverScene = GameOverScene(size: self.size, won: false, mark: self.monstersDestroyed)
             self.view?.presentScene(gameOverScene, transition: reveal)
         }
-        actual_monster.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
+        actual_monster.run(SKAction.sequence([actionMove, actionMoveDone]))
         
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        swiped = false
-        
-        if let touch = touches.first {
-            lastPoint = touch.location(in: self.view)
-        }
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        swiped = false
+//        
+//        if let touch = touches.first {
+//            lastPoint = touch.location(in: self.view)
+//        }
+//    }
     
     func drawLines(fromPoint:CGPoint,toPoint:CGPoint) {
         UIGraphicsBeginImageContext((self.view?.frame.size)!)
@@ -220,7 +222,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        swiped = true
+        //swiped = true
         
         if let touch = touches.first {
             let currentPoint = touch.location(in: self.view)
@@ -231,64 +233,65 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        if !swiped {
-            drawLines(fromPoint: lastPoint, toPoint: lastPoint)
-        }
-        self.imageView.image = nil
-        /*
-        
-        // 1 - Choose one of the touches to work with
-        guard let touch = touches.first else {
-            return
-        }
-        let touchLocation = touch.location(in: self)
-        
-        // 2 - Set up initial location of projectile
-        let projectile = SKSpriteNode(imageNamed: "projectile")
-        projectile.position = player.position
-        
-        // 3 - Determine offset of location to projectile
-        let offset = touchLocation - projectile.position
-        
-        // 4 - Bail out if you are shooting down or backwards
-        //if (offset.x < -500) { return }
-        
-        // 5 - OK to add now - you've double checked position
-        addChild(projectile)
-        
-        // 6 - Get the direction of where to shoot
-        let direction = offset.normalized()
-        
-        // 7 - Make it shoot far enough to be guaranteed off screen
-        let shootAmount = direction * 1000
-        
-        // 8 - Add the shoot amount to the current position
-        let realDest = shootAmount + projectile.position
-        
-        // 9 - Create the actions
-        let actionMove = SKAction.move(to: realDest, duration: 2.0)
-        let actionMoveDone = SKAction.removeFromParent()
-        projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
-        
-        projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width/2)
-        projectile.physicsBody?.isDynamic = true
-        projectile.physicsBody?.categoryBitMask = PhysicsCategory.Projectile
-        projectile.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
-        projectile.physicsBody?.collisionBitMask = PhysicsCategory.None
-        projectile.physicsBody?.usesPreciseCollisionDetection = true*/
-        
-    }
-    
-    
+    // shoot monsters
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        
+//        if !swiped {
+//            drawLines(fromPoint: lastPoint, toPoint: lastPoint)
+//        }
+//        self.imageView.image = nil
+//        
+//        
+//        // 1 - Choose one of the touches to work with
+//        guard let touch = touches.first else {
+//            return
+//        }
+//        let touchLocation = touch.location(in: self)
+//        
+//        // 2 - Set up initial location of projectile
+//        let projectile = SKSpriteNode(imageNamed: "projectile")
+//        projectile.position = player.position
+//        
+//        // 3 - Determine offset of location to projectile
+//        let offset = touchLocation - projectile.position
+//        
+//        // 4 - Bail out if you are shooting down or backwards
+//        //if (offset.x < -500) { return }
+//        
+//        // 5 - OK to add now - you've double checked position
+//        addChild(projectile)
+//        
+//        // 6 - Get the direction of where to shoot
+//        let direction = offset.normalized()
+//        
+//        // 7 - Make it shoot far enough to be guaranteed off screen
+//        let shootAmount = direction * 1000
+//        
+//        // 8 - Add the shoot amount to the current position
+//        let realDest = shootAmount + projectile.position
+//        
+//        // 9 - Create the actions
+//        let actionMove = SKAction.move(to: realDest, duration: 2.0)
+//        let actionMoveDone = SKAction.removeFromParent()
+//        projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+//        
+//        projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width/2)
+//        projectile.physicsBody?.isDynamic = true
+//        projectile.physicsBody?.categoryBitMask = PhysicsCategory.Projectile
+//        projectile.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
+//        projectile.physicsBody?.collisionBitMask = PhysicsCategory.None
+//        projectile.physicsBody?.usesPreciseCollisionDetection = true
+//        
+//    }
     
     
     
-    func projectileDidCollideWithMonster(projectile: SKSpriteNode, monster: SKSpriteNode) {
+    
+    // remove monster
+    //func projectileDidCollideWithMonster(projectile: SKSpriteNode, monster: SKSpriteNode, name: String) {
+    func projectileDidCollideWithMonster(name: String) {
         //print("Hit")
-        
+        /*
         //add explosion effect and sound
         let explosion = SKEmitterNode(fileNamed: "Explosion")!
         explosion.position = monster.position
@@ -304,34 +307,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.run(SKAction.wait(forDuration:2)){
             explosion.removeFromParent()
-        }
+        }*/
+        self.enumerateChildNodes(withName: name, using: {
+            node, stop in
+            // do something with node or stop
+            node.removeFromParent()
+            
+        })
 
     }
     
-    func didBegin(_ contact: SKPhysicsContact) {
-        
-        // 1
-        var firstBody: SKPhysicsBody
-        var secondBody: SKPhysicsBody
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
-            firstBody = contact.bodyA
-            secondBody = contact.bodyB
-        } else {
-            firstBody = contact.bodyB
-            secondBody = contact.bodyA
-        }
-        
-        // 2
-        if ((firstBody.categoryBitMask & PhysicsCategory.Monster != 0) &&
-            (secondBody.categoryBitMask & PhysicsCategory.Projectile != 0)) {
-            if var monster = firstBody.node as? SKSpriteNode, let
-                projectile = secondBody.node as? SKSpriteNode {
-                
-                moster =
-                
-                projectileDidCollideWithMonster(projectile: projectile, monster: monster)
-            }
-        }
-        
-    }
+    // run when collide
+//    func didBegin(_ contact: SKPhysicsContact) {
+//        
+//        // 1
+//        var firstBody: SKPhysicsBody
+//        var secondBody: SKPhysicsBody
+//        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+//            firstBody = contact.bodyA
+//            secondBody = contact.bodyB
+//        } else {
+//            firstBody = contact.bodyB
+//            secondBody = contact.bodyA
+//        }
+//        
+//        // 2
+//        if ((firstBody.categoryBitMask & PhysicsCategory.Monster != 0) &&
+//            (secondBody.categoryBitMask & PhysicsCategory.Projectile != 0)) {
+//            if let monster = firstBody.node as? SKSpriteNode, let
+//                projectile = secondBody.node as? SKSpriteNode {
+//                
+//                //projectileDidCollideWithMonster(projectile: projectile, monster: monster, name: "vline")
+//            }
+//        }
+//        
+//    }
 }

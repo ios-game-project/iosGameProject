@@ -19,6 +19,8 @@ class GestureRecognizer: UIGestureRecognizer {
     var isCircle = false
     var isVertical = false
     
+    var lastPoint = CGPoint.zero
+    
     var path = CGMutablePath() // running CGPath - helps with drawing
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent)  {
@@ -45,17 +47,17 @@ class GestureRecognizer: UIGestureRecognizer {
         vFitResult = fitVertical(points: touchedPoints)
         
         // make sure there are no points in the middle of the circle
-        let hasInside = anyPointsInTheMiddle()
+        //let hasInside = anyPointsInTheMiddle()
         
-        let percentOverlap = calculateBoundingOverlap()
+        //let percentOverlap = calculateBoundingOverlap()
         
         
         //print(cFitResult.error)
         //print(hasInside)
         //print(percentOverlap)
-        print("error: \(vFitResult.error)")
+        //print("error: \(vFitResult.error)")
         //print(vFitResult.isLine)
-        print("*********************")
+        //print("*********************")
         
         //isCircle = cFitResult.error <= tolerance && !hasInside //&& percentOverlap > (1-tolerance)
         
@@ -77,11 +79,22 @@ class GestureRecognizer: UIGestureRecognizer {
         if let loc = touches.first?.location(in: window) {
             //print(loc)
             touchedPoints.append(loc)
-            path.move(to: CGPoint(x:loc.x, y:loc.y))
+            path.addLine(to: loc)
+            
+            //drawLines(fromPoint: lastPoint, toPoint: loc)
+            lastPoint = loc
             state = .changed
         }
+        
+        
+//        if let touch = touches.first {
+//            let currentPoint = touch.location(in: self.view)
+//            drawLines(fromPoint: lastPoint, toPoint: currentPoint)
+//            
+//            lastPoint = currentPoint
+//        }
     }
-    
+    /*
     private func anyPointsInTheMiddle() -> Bool {
         // 1
         let fitInnerRadius = cFitResult.radius / sqrt(2) * tolerance
@@ -122,7 +135,7 @@ class GestureRecognizer: UIGestureRecognizer {
         
         let percentOverlap = overlapRectArea / circleBoxArea
         return percentOverlap
-    }
+    }*/
     
 }
 
