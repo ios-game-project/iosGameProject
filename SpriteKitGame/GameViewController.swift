@@ -11,6 +11,8 @@ import SpriteKit
 
 class GameViewController: UIViewController {
     
+    
+    @IBOutlet weak var drawer: DrawingView!
     var recognizer: GestureRecognizer!
     var scene: GameScene!
     // draws the user input
@@ -52,20 +54,21 @@ class GameViewController: UIViewController {
     
     func circled(c: GestureRecognizer){
         if c.state == .began {
-            //print("began")
-            //circlerDrawer.clear()
+            //print("began")            
         }
         if c.state == .changed {
-            //circlerDrawer.updatePath(p: c.path)
+            drawer.updatePath(p: c.path)
         }
         if c.state == .failed {
             print("failed")
         }
         if c.state == .ended {
-            //print("circle")
-            print("vertical line")
-            
+            drawer.clear()
+            print("vertical line")            
             scene.projectileDidCollideWithMonster(name: "vline")
+        }
+        if c.state == .possible{
+            print("possible")
         }
         /*
          if c.state == .ended || c.state == .failed || c.state == .cancelled {

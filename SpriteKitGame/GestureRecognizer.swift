@@ -30,40 +30,31 @@ class GestureRecognizer: UIGestureRecognizer {
             state = .failed
         }
         
+        touchedPoints.removeAll(keepingCapacity: true)
+        isVertical = false
+        
         let window = view?.window
         if let loc = touches.first?.location(in: window) {
             path.move(to: CGPoint(x:loc.x, y:loc.y)) // start the path
         }
-        touchedPoints.removeAll()
+
         state = .began
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesEnded(touches, with: event)
-        //state = .ended
         
         // now that the user has stopped touching, figure out if the path was a circle
         cFitResult = fitCircle(points: touchedPoints)
         vFitResult = fitVertical(points: touchedPoints)
         
         // make sure there are no points in the middle of the circle
-        //let hasInside = anyPointsInTheMiddle()
-        
+        //let hasInside = anyPointsInTheMiddle()        
         //let percentOverlap = calculateBoundingOverlap()
-        
-        
-        //print(cFitResult.error)
-        //print(hasInside)
-        //print(percentOverlap)
-        //print("error: \(vFitResult.error)")
-        //print(vFitResult.isLine)
-        //print("*********************")
-        
         //isCircle = cFitResult.error <= tolerance && !hasInside //&& percentOverlap > (1-tolerance)
         
+        path = CGMutablePath()
         isVertical = (vFitResult.error < 10.0) && vFitResult.isLine
-        
-        //state = isCircle ? .ended : .failed
         state = isVertical ? .ended : .failed
     }
     
@@ -86,14 +77,17 @@ class GestureRecognizer: UIGestureRecognizer {
             state = .changed
         }
         
-        
-//        if let touch = touches.first {
-//            let currentPoint = touch.location(in: self.view)
-//            drawLines(fromPoint: lastPoint, toPoint: currentPoint)
-//            
-//            lastPoint = currentPoint
-//        }
     }
+    
+    //either that the touches haven’t matched or that the gesture has failed
+//    override func reset() {
+//        super.reset()
+//        touchedPoints.removeAll(keepingCapacity: true)
+//        path = CGMutablePath()
+//        isVertical = false
+//        state = .possible
+//    }
+    
     /*
     private func anyPointsInTheMiddle() -> Bool {
         // 1

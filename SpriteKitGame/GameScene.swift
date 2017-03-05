@@ -288,32 +288,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     // remove monster
-    //func projectileDidCollideWithMonster(projectile: SKSpriteNode, monster: SKSpriteNode, name: String) {
     func projectileDidCollideWithMonster(name: String) {
-        //print("Hit")
-        /*
-        //add explosion effect and sound
-        let explosion = SKEmitterNode(fileNamed: "Explosion")!
-        explosion.position = monster.position
-        self.addChild(explosion)
-
-        self.run(SKAction.playSoundFileNamed("ExplosionSound.mp3", waitForCompletion: false))
-        
-        projectile.removeFromParent()
-        monster.removeFromParent()
-        
-        monstersDestroyed += 1
-        score = monstersDestroyed
-        
-        self.run(SKAction.wait(forDuration:2)){
-            explosion.removeFromParent()
-        }*/
         self.enumerateChildNodes(withName: name, using: {
             node, stop in
             // do something with node or stop
             node.removeFromParent()
+            //add explosion effect and sound
+            let explosion = SKEmitterNode(fileNamed: "Explosion")!
+            explosion.position = node.position
+            self.addChild(explosion)
+            self.run(SKAction.playSoundFileNamed("ExplosionSound.mp3", waitForCompletion: false))
+            self.monstersDestroyed += 1
+            self.score = self.monstersDestroyed
             
+            self.run(SKAction.wait(forDuration:2)){
+                explosion.removeFromParent()
+            }
         })
+        
 
     }
     

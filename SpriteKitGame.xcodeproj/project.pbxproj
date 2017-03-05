@@ -19,6 +19,7 @@
 		B3ED1C111E6A021200DE5879 /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED1C101E6A021200DE5879 /* GestureRecognizer.swift */; };
 		B3ED1C141E6A039D00DE5879 /* VerticalFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED1C131E6A039D00DE5879 /* VerticalFit.swift */; };
 		B3ED1C161E6A03E600DE5879 /* CircleFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED1C151E6A03E600DE5879 /* CircleFit.swift */; };
+		B3FE87A91E6BA338004CD75E /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FE87A81E6BA338004CD75E /* DrawingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		B3ED1C101E6A021200DE5879 /* GestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureRecognizer.swift; sourceTree = "<group>"; };
 		B3ED1C131E6A039D00DE5879 /* VerticalFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerticalFit.swift; path = "untitled folder/VerticalFit.swift"; sourceTree = "<group>"; };
 		B3ED1C151E6A03E600DE5879 /* CircleFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleFit.swift; sourceTree = "<group>"; };
+		B3FE87A81E6BA338004CD75E /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				138926731E49550700ACE1AA /* Info.plist */,
 				131320F91E4C33F80001D8E6 /* GameOverScene.swift */,
 				B3ED1C101E6A021200DE5879 /* GestureRecognizer.swift */,
+				B3FE87A81E6BA338004CD75E /* DrawingView.swift */,
 			);
 			path = SpriteKitGame;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				138926681E49550700ACE1AA /* GameScene.swift in Sources */,
 				B3ED1C141E6A039D00DE5879 /* VerticalFit.swift in Sources */,
 				B3ED1C111E6A021200DE5879 /* GestureRecognizer.swift in Sources */,
+				B3FE87A91E6BA338004CD75E /* DrawingView.swift in Sources */,
 				B3ED1C161E6A03E600DE5879 /* CircleFit.swift in Sources */,
 				1389266A1E49550700ACE1AA /* GameViewController.swift in Sources */,
 				131320FA1E4C33F80001D8E6 /* GameOverScene.swift in Sources */,
