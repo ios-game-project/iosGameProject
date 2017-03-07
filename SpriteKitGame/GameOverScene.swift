@@ -75,7 +75,7 @@ class GameOverScene: SKScene {
         addChild(testLabel)
 
         
-        if(UserDefaults.standard.bool(forKey: "HasLaunchedOnce")){
+        if(!UserDefaults.standard.bool(forKey: "HasLaunchedOnce")){
             testLabel.text = "first launch"
             
             UserDefaults.standard.set(true, forKey: "HasLaunchedOnce")
