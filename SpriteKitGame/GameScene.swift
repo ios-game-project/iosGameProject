@@ -64,6 +64,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var monstersDestroyed = 0
     var fallFrequency = 1.5
     let player = SKSpriteNode(imageNamed: "player")
+
     
     var lastPoint = CGPoint.zero
     var swiped = false
@@ -85,8 +86,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     
     override func didMove(to view: SKView) {
+        
+       
+        /*
+         background.size = self.frame.size;
+         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+         addChild(background)
+         */
+        
         // 2
-        backgroundColor = SKColor.black
+        backgroundColor = SKColor.blue
+        //let color = SKColor(red: 100, green: 146, blue: 181, alpha: 0)
+        //backgroundColor = color
         
         //create a UIImageView
         imageView = UIImageView(frame:CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth))
@@ -124,6 +135,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         score = 0
         
         self.addChild(scoreLabel)
+        
+        
     }
     
     

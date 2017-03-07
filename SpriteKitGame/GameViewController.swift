@@ -20,28 +20,29 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back")!)
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back")!)
+        
+        
+        //show gamescene first
         scene = GameScene(size: view.bounds.size)
-        //let skView = view as! SKView
+        let skView = view as! SKView
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        skView.ignoresSiblingOrder = true
+        scene?.scaleMode = .fill
+        skView.presentScene(scene)
+ 
+        /*
+        //show menescene first
+        let scene = MenuScene(fileNamed: "MenuScene")
+        let skView = view as! SKView
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        skView.ignoresSiblingOrder = true
+        scene?.scaleMode = .fill
+        skView.presentScene(scene)
+        */
         
-        if let skView = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                skView.presentScene(scene)
-            }
-            skView.showsFPS = true
-            skView.showsNodeCount = true
-            skView.ignoresSiblingOrder = true
-            skView.presentScene(scene)
-        }
-        
-        //scene.scaleMode = .resizeFill
-        //skView.presentScene(scene)
-        //circleRecognizer = CircleGestureRecognizer(target: self, action: "circled:")
         
         recognizer = GestureRecognizer(target: self, action: #selector(GameViewController.circled))
         view.addGestureRecognizer(recognizer)
