@@ -16,6 +16,10 @@
 		138926721E49550700ACE1AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 138926701E49550700ACE1AA /* LaunchScreen.storyboard */; };
 		20CD68231E693B9500BA305F /* ExplosionSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20CD68221E693B9500BA305F /* ExplosionSound.mp3 */; };
 		20CD68251E6943E900BA305F /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20CD68241E6943E900BA305F /* Explosion.sks */; };
+		B3ED1C111E6A021200DE5879 /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED1C101E6A021200DE5879 /* GestureRecognizer.swift */; };
+		B3ED1C141E6A039D00DE5879 /* VerticalFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED1C131E6A039D00DE5879 /* VerticalFit.swift */; };
+		B3ED1C161E6A03E600DE5879 /* CircleFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED1C151E6A03E600DE5879 /* CircleFit.swift */; };
+		B3FE87A91E6BA338004CD75E /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FE87A81E6BA338004CD75E /* DrawingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		138926731E49550700ACE1AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20CD68221E693B9500BA305F /* ExplosionSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ExplosionSound.mp3; sourceTree = "<group>"; };
 		20CD68241E6943E900BA305F /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
+		B3ED1C101E6A021200DE5879 /* GestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureRecognizer.swift; sourceTree = "<group>"; };
+		B3ED1C131E6A039D00DE5879 /* VerticalFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerticalFit.swift; path = "untitled folder/VerticalFit.swift"; sourceTree = "<group>"; };
+		B3ED1C151E6A03E600DE5879 /* CircleFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleFit.swift; sourceTree = "<group>"; };
+		B3FE87A81E6BA338004CD75E /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 		138926601E49550700ACE1AA /* SpriteKitGame */ = {
 			isa = PBXGroup;
 			children = (
+				B3ED1C121E6A038600DE5879 /* Fit */,
 				20CD681F1E693B5700BA305F /* Asset */,
 				138926611E49550700ACE1AA /* AppDelegate.swift */,
 				138926671E49550700ACE1AA /* GameScene.swift */,
@@ -71,6 +80,8 @@
 				138926701E49550700ACE1AA /* LaunchScreen.storyboard */,
 				138926731E49550700ACE1AA /* Info.plist */,
 				131320F91E4C33F80001D8E6 /* GameOverScene.swift */,
+				B3ED1C101E6A021200DE5879 /* GestureRecognizer.swift */,
+				B3FE87A81E6BA338004CD75E /* DrawingView.swift */,
 			);
 			path = SpriteKitGame;
 			sourceTree = "<group>";
@@ -82,6 +93,15 @@
 				20CD68221E693B9500BA305F /* ExplosionSound.mp3 */,
 			);
 			name = Asset;
+			sourceTree = "<group>";
+		};
+		B3ED1C121E6A038600DE5879 /* Fit */ = {
+			isa = PBXGroup;
+			children = (
+				B3ED1C131E6A039D00DE5879 /* VerticalFit.swift */,
+				B3ED1C151E6A03E600DE5879 /* CircleFit.swift */,
+			);
+			name = Fit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +180,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				138926681E49550700ACE1AA /* GameScene.swift in Sources */,
+				B3ED1C141E6A039D00DE5879 /* VerticalFit.swift in Sources */,
+				B3ED1C111E6A021200DE5879 /* GestureRecognizer.swift in Sources */,
+				B3FE87A91E6BA338004CD75E /* DrawingView.swift in Sources */,
+				B3ED1C161E6A03E600DE5879 /* CircleFit.swift in Sources */,
 				1389266A1E49550700ACE1AA /* GameViewController.swift in Sources */,
 				131320FA1E4C33F80001D8E6 /* GameOverScene.swift in Sources */,
 				138926621E49550700ACE1AA /* AppDelegate.swift in Sources */,
