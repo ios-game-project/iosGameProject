@@ -14,8 +14,9 @@ struct PhysicsCategory {
     static let None      : UInt32 = 0
     static let All       : UInt32 = UInt32.max
     static let Monster   : UInt32 = 0b1       // 1
-    static let Projectile: UInt32 = 0b10      // 2
+    static let Projectile: UInt32 = 0b10      // 2   
 }
+
 
 func + (left: CGPoint, right: CGPoint) -> CGPoint {
     return CGPoint(x: left.x + right.x, y: left.y + right.y)
@@ -63,6 +64,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var monstersDestroyed = 0
     var fallFrequency = 1.5
     let player = SKSpriteNode(imageNamed: "player")
+
     
     var lastPoint = CGPoint.zero
     var swiped = false
@@ -84,8 +86,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     
     override func didMove(to view: SKView) {
+        
+       
+        /*
+         background.size = self.frame.size;
+         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+         addChild(background)
+         */
+        
         // 2
-        backgroundColor = SKColor.black
+        backgroundColor = SKColor.blue
+        //let color = SKColor(red: 100, green: 146, blue: 181, alpha: 0)
+        //backgroundColor = color
         
         //create a UIImageView
         imageView = UIImageView(frame:CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth))
@@ -123,6 +135,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         score = 0
         
         self.addChild(scoreLabel)
+        
+        
     }
     
     
